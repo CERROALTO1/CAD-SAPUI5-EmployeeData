@@ -1,0 +1,184 @@
+<mvc:View controllerName="oasis.controller.Object" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:microchart="sap.suite.ui.microchart" xmlns:unified="sap.ui.unified">
+	<semantic:FullscreenPage id="page" navButtonPress="onNavBack" showNavButton="true" title="{i18n>objectTitle}" busy="{objectView>/busy}"
+		busyIndicatorDelay="{objectView>/delay}">
+		<semantic:content>
+			<ObjectHeader id="objectHeader" title="{Firstname}" number="{ path: 'Salary', formatter: '.formatter.numberUnit' }" numberUnit="{Country}"></ObjectHeader>
+			<Panel headerText="Form Input" expandable="true" expanded="true"></Panel>
+			<!--			<Panel headerText="List Output" expandable="true"  expanded="true"> 
+			<List items="{/EMPSet}" 
+				  width="550px" 
+				  growing="true" 
+				  growingThreshold="10">
+				<StandardListItem   title="{Userid}" 
+									description="{Firstname} {Lastname}" 
+									info="{Emailid}" 
+									counter="{Salary}" 
+									infoState="Success"
+									icon="/greencolor.gif"/>
+			</List>
+			</Panel>-->
+			<IconTabBar>
+				<items>
+					<IconTabFilter text="Form" iconColor="Positive" icon="sap-icon://doctor">
+						<content>
+							<Table items="{/EMPSet}" growing="true" growingThreshold="10">
+								<columns>
+									<Column>
+										<Label text="Userid" design="Bold"/>
+									</Column>
+									<Column>
+										<Label text="Firstname" design="Bold"/>
+									</Column>
+									<!--<Column> <Label text="Lastname" 	design="Bold"/> </Column>-->
+									<Column>
+										<Label text="Emailid" design="Bold"/>
+									</Column>
+									<Column>
+										<Label text="Country" design="Bold"/>
+									</Column>
+									<Column> <Label text="Staus" design="bold"/> </Column>
+									<Column>
+										<Label text="Salary" design="Bold"/>
+									</Column>
+									<Column>
+										<Label text="Phone" design="Bold"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{Userid}"/>
+											<Text text="{Firstname} {Lastname}"/>
+											<!--<Text	text="{Lastname}"/>-->
+											<Text text="{Emailid}"/>
+											<Text text="{Country}"/>
+										<ObjectNumber Number="{Salary}" state="{path:'Salary',formatter:'.formatter.OBJECTNUMBERFF'}"/>
+										<Text text="{path:'Salary',formatter:'.formatter.STATUSFF'}" width="75px"/>
+											<Text text="{Phone}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter text="List" iconColor="Positive" icon="sap-icon://process">
+						<content>
+							<form:SimpleForm layout="ResponsiveGridLayout">
+								<Label text="About Course" textDirection="RTL" design="Bold"/>
+								<Text text="SAP UI5 TRAINING"/>
+								<Label text="Website Link" textDirection="RTL" design="Bold"/>
+								<link text="Google" href="http://www.google.com" target="_blank" width="250px"/>
+								<Label text="Company Logo" textDirection="RTL" design="Bold"/>
+								<Image src="/oasis.png" height="50px" width="50px"/>
+								<Label text="Enter Userid" textDirection="RTL" design="Bold"/>
+								<Input value="" width="250px"/>
+								<Label required="true" text="Enter Firstname" textDirection="RTL" design="Bold"/>
+								<!--<Input value="" width="250px"/>-->
+								<Select items="{/EMPSet}" width="250px">
+									<core:Item key="{Userid}" text="{Firstname}"/>
+								</Select>
+								<Label text="Enter Lastname" textDirection="RTL" design="Bold"/>
+								<Input value="" width="250px"/>
+								<Label text="Enter Emailid" textDirection="RTL" design="Bold"/>
+								<Input value="" width="250px"/>
+								<Label text="Enter Country" textDirection="RTL" design="Bold"/>
+								<!--<Input value="" width="250px"/>-->
+								<Select width="250px">
+									<items>
+										<core:Item key="IN" text="India"/>
+										<core:Item key="US" text="United States"/>
+										<core:Item key="RS" text="Russia"/>
+										<core:Item key="JP" text="Japan"/>
+										<core:Item key="CH" text="Chaina"/>
+									</items>
+								</Select>
+								<Label text="State" textDirection="RTL" design="Bold"/>
+								<!--				<ComboBox width="250px">
+					<items>
+						<core:Item key="IN" text="INDIA"/>
+						<core:Item key="CH" text="CHINA"/>
+						<core:Item key="US" text="USA"/>
+						<core:Item key="IT" text="ITALY"/>
+						<core:Item key="UK" text="UK"/>
+						<core:Item key="IR" text="IRAN"/>
+						<core:Item key="CA" text="CANADA"/>
+					</items>
+				</ComboBox>-->
+								<ComboBox width="250px">
+									<items>
+										<core:Item Key="AP" text="Andrapradesh"/>
+										<core:Item Key="TS" text="Telangana"/>
+										<core:Item Key="TN" text="Tamilnadu"/>
+										<core:Item Key="KL" text="Kerala"/>
+									</items>
+								</ComboBox>
+								<Label text="Countries List" textDirection="RTL" design="Bold"/>
+								<Tokenizer>
+									<tokens>
+										<Token key="IN" text="INDIA"/>
+										<Token text="USA"/>
+										<Token text="UK"/>
+										<Token text="CHINA"/>
+										<Token text="CANADA"/>
+										<Token text="ITALY"/>
+										<Token text="IRAN"/>
+									</tokens>
+								</Tokenizer>
+								<Label text="Enter Salary" textDirection="RTL" design="Bold"/>
+								<Input value="" width="250px"/>
+								<Label text="Enter Mobile Number" textDirection="RTL" design="Bold"/>
+								<Input value="" width="250px"/>
+								<Label text="Enter Password" textDirection="RTL" design="Bold"/>
+								<Input value="" width="250px" type="Password"/>
+								<Label text="Are You Learning Fiori" textDirection="RTL" design="Bold"/>
+								<CheckBox selected="false"/>
+								<Label text="Are You Permanent EMP" textDirection="RTL" design="Bold"/>
+								<Switch state="true" customTextOn="YES" customTextOff="NO"/>
+								<Label text="Select Rating" textDirection="RTL" design="Bold"/>
+								<RatingIndicator value=" " maxValue="5"/>
+								<Label text="Select Percentage" textDirection="RTL" design="Bold"/>
+								<Slider value="80" min="0" max="100" width="250px"/>
+								<Label text="Select Percentage" textDirection="RTL" design="Bold"/>
+								<ProgressIndicator percentValue="80" state="Success" width="250px"/>
+								<Label text="Select Date of Joining" textDirection="RTL" design="Bold"/>
+								<DatePicker value="" width="250px"/>
+								<Label text="Select Time of Joining" textDirection="RTL" design="Bold"/>
+								<TimePicker value="" width="250px"/>
+								<Label text="Select Date Time of Joining" textDirection="RTL" design="Bold"/>
+								<DateTimeInput value="" type="DateTime" width="250px"/>
+								<Label text="Enter Comments" textDirection="RTL" design="Bold"/>
+								<TextArea value="" rows="5" cols="40" width="250px"/>
+								<Label text="Select Candidate" textDirection="RTL" design="Bold"/>
+								<Breadcrumbs>
+									<links>
+										<Link text="Rajiv Bajaj" target="_blank" href="http://www.Google.com/search?q=Rajiv Bajaj"/>
+										<Link text="Rahul Gandhi" target="_blank" href="http://www.Google.com/search?q=Rahul Gandhi"/>
+										<Link text="Sachin Tendulkar" target="_blank" href="http://www.Google.com/search?q=Sachin Tendulkar"/>
+										<Link text="Sachin Pilot" target="_blank" href="http://www.Google.com/search?q=Sachin Pilot"/>
+										<Link text="MS Dhoni" target="_blank" href="http://www.Google.com/search?q=MS Dhoni"/>
+										<Link text="MK Stalin" target="_blank" href="http://www.Google.com/search?q=MK Stalin"/>
+										<Link text="Subbu" target="_blank" href="https://www.linkedin.com/in/salakam"/>
+									</links>
+								</Breadcrumbs>
+							</form:SimpleForm>
+						</content>
+					</IconTabFilter>
+					<IconTabFilter text="Table" iconColor="Positive" icon="sap-icon://account">
+						<content></content>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</semantic:content>
+		<semantic:sendEmailAction>
+			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
+		</semantic:sendEmailAction>
+		<semantic:shareInJamAction>
+			<semantic:ShareInJamAction id="shareInJam" visible="{FLP>/isShareInJamActive}" press="onShareInJamPress"/>
+		</semantic:shareInJamAction>
+		<semantic:saveAsTileAction>
+			<footerbar:AddBookmarkButton id="shareTile" title="{objectView>/saveAsTileTitle}"/>
+		</semantic:saveAsTileAction>
+	</semantic:FullscreenPage>
+</mvc:View>
